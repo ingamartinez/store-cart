@@ -1,0 +1,34 @@
+	<!-- letest product section -->
+	<section class="top-letest-product-section">
+		<div class="container">
+			<div class="section-title">
+				<h2>LATEST PRODUCTS</h2>
+      </div>
+
+      <owl-carousel-o [options]="customOptions">
+        <ng-container *ngFor="let product of products">
+          <ng-template carouselSlide>
+            <div class="product-item">
+              <div class="pi-pic">
+                <div *ngFor="let image of product.images;  let index = index;">
+                    <img *ngIf="index == 1 && image.url != null" src="{{baseURL + image.url}}" alt="">
+                </div>
+
+                <img *ngIf="!product.images" src="assets/img/picture-placeholder.png" alt="">
+
+                <div class="pi-links">
+                  <a href="javascript: void(0)" (click)="addToCart(product)" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
+                  <a href="javascript: void(0)" class="wishlist-btn"><i class="flaticon-heart"></i></a>
+                </div>
+              </div>
+              <div class="pi-text">
+                <h6>{{product.price.formattedValue}}</h6>
+                <p>{{product.manufacturer}} : {{product.name}} </p>
+              </div>
+            </div>
+          </ng-template>
+        </ng-container>
+      </owl-carousel-o>
+		</div>
+	</section>
+	<!-- letest product section end -->
